@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SailingRacer</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <nav>
+      <%= link_to 'Races', races_path %>
+      <%= link_to 'Sailors', sailors_path %>
+      <%= link_to 'Racers', racers_path %>
+
+    <%= yield %>
+  </body>
+</html>

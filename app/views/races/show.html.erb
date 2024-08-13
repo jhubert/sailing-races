@@ -1,0 +1,24 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @race %>
+
+<h3>Registered Sailors</h3>
+
+<div data-controller="race-roll">
+  <ol id="racers" data-race-roll-target="list">
+  <%= render @race.sailors.order(:sail_number) %>
+  </ol>
+
+  <div data-race-roll-target="template" style="display: none">
+    <%= render Sailor.new(id: "TEMPLATE_ID", name: "TEMPLATE_NAME", hometown: "TEMPLATE_HOMETOWN", sail_number: "TEMPLATE_SAILNUMBER") %>
+  </div>
+</div>
+
+<%= render 'racers/form', racer: Racer.new(race: @race) %>
+
+<div>
+  <%= link_to "Edit this race", edit_race_path(@race) %> |
+  <%= link_to "Back to races", races_path %>
+
+  <%= button_to "Destroy this race", @race, method: :delete %>
+</div>

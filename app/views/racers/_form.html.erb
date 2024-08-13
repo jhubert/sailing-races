@@ -1,0 +1,31 @@
+<%= form_with(model: racer) do |form| %>
+  <% if racer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(racer.errors.count, "error") %> prohibited this racer from being saved:</h2>
+
+      <ul>
+        <% racer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :sailor_id, style: "display: block" %>
+    <%= form.collection_select :sailor_id, Sailor.all, :id, :name, include_blank: true %>
+  </div>
+
+  <% if racer.race_id.present? %>
+  <%= form.hidden_field :race_id %>
+  <% else %>
+  <div>
+    <%= form.label :race_id, style: "display: block" %>
+    <%= form.collection_select :race_id, Race.all, :id, :name, include_blank: true %>
+  </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

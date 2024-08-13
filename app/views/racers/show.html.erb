@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @racer %>
+
+<div>
+  <%= link_to "Edit this racer", edit_racer_path(@racer) %> |
+  <%= link_to "Back to racers", racers_path %>
+
+  <%= button_to "Destroy this racer", @racer, method: :delete %>
+</div>
